@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+{% block title %}Detalhes da Fazenda{% endblock %}
+
+{% block content %}
+<h1>{{ farm.name }}</h1>
+<p>Localização: {{ farm.location }}</p>
+<h2>Cavalos</h2>
+<ul class="list-group">
+    {% for horse in farm.horses.all %}
+        <li class="list-group-item">
+            {{ horse.name }} - {{ horse.breed }} - {{ horse.age }} anos
+            <a class="btn btn-secondary btn-sm" href="{% url 'edit_horse' farm.id horse.id %}">Editar</a>
+            <form method="post" action="{% url 'delete_horse' farm.id horse.id %}" style="display:inline;">
+                {% csrf_token %}
+                <button type="submit" class="btn btn-danger btn-sm">Excluir</button>
+            </form>
+        </li>
+    {% endfor %}
+</ul>
+<a class="btn btn-primary btn-lg" href="{% url 'add_horse' farm.id %}" role="button">Adicionar Cavalo</a>
+<a class="btn btn-secondary btn-lg" href="{% url 'edit_farm' farm.id %}" role="button">Editar Fazenda</a>
+<form method="post" action="{% url 'delete_farm' farm.id %}" style="display:inline;">
+    {% csrf_token %}
+    <button type="submit" class="btn btn-danger btn-lg">Excluir Fazenda</button>
+</form>
+{% endblock %}

@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block title %}Home{% endblock %}
+
+{% block content %}
+<div class="jumbotron">
+    <h1 class="display-4">Bem-vindo, {{ user.username }}!</h1>
+    <p class="lead">Esta é a sua área de gestão de fazendas de cavalos.</p>
+    <hr class="my-4">
+    <p>Use a navegação abaixo para acessar diferentes seções do sistema.</p>
+    <a class="btn btn-primary btn-lg" href="{% url 'add_farm' %}" role="button">Adicionar Fazenda</a>
+</div>
+<h2>Fazendas</h2>
+<ul class="list-group">
+    {% for farm in farms %}
+        <li class="list-group-item">
+            <a href="{% url 'farm_detail' farm.id %}">{{ farm.name }}</a> - {{ farm.location }}
+        </li>
+    {% endfor %}
+</ul>
+{% endblock %}
