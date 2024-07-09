@@ -4,6 +4,7 @@ from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth.decorators import login_required
 from .models import Farm, Horse
 from django.contrib.auth.models import User
+from django.contrib.auth.forms import UserCreationForm
 
 def user_login(request):
     if request.method == 'POST':
@@ -18,6 +19,19 @@ def user_login(request):
     else:
         form = AuthenticationForm()
     return render(request, 'login.html', {'form': form})
+
+@login_required
+def add_user(request):
+    if not request.user.is_superuser:
+        return redirect('home')
+    if request.method == 'POST':
+        form = UserCreationForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('home')
+    else:
+        form = UserCreationForm()
+    return render(request, 'add_user.html', {'form': form})
 
 def user_logout(request):
     logout(request)
