@@ -17,5 +17,5 @@ venv/Scripts/Activate
 
 ## install
 ```shell
-pip install -r requirements.txt
+pip install -r Requirements.txt
 ```
