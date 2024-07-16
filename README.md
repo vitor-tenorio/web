@@ -13,7 +13,7 @@
     * [Benefícios](#benefícios)
     * [Diagrama de Caso de Uso](#diagrama-de-caso-de-uso)
     * [Diagrama Entidade-Relacionamento (DER)](#diagrama-entidade-relacionamento-der)
-* [Execução do Projeto](#execução-do-projeto)
+* [Execução do Projeto Localmente](#execução-do-projeto-localmente)
     * [Requisitos](#requisitos)
     * [Clone o repositório](#clone-o-repositório)
     * [Instalando o Python](#instalando-o-python)
@@ -25,6 +25,9 @@
     * [Executando as migrações](#execute-as-migrações)
     * [Crie um superusuário para acessar o admin](#crie-um-superusuário-para-acessar-o-admin)
     * [Executando o Projeto](#executando-o-projeto)
+* [Executando o Projeto Docker](#executando-o-projeto-docker)
+    * [Build da Imagem Docker](#build-da-imagem-docker)
+    * [Executar o Container Docker](#executar-o-container-docker)
 * [Créditos](#créditos)
 
 # Sistema de Gestão de Fazendas de Cavalos
@@ -105,7 +108,7 @@ O diagrama entidade-relacionamento (DER) do sistema é apresentado abaixo:
 
 ![DER](./docs/DER-work.png)
 
-## Execução do Projeto
+## Execução do Projeto Localmente
 
 ### Requisitos
 - Python 3.x
@@ -211,6 +214,22 @@ Inicie a execução do projeto django criado utilizando o comando abaixo:
 
 ```bash
 python horse_farm_management\manage.py runserver
+```
+
+## Executando o Projeto Docker
+
+Foi criado um arquivo Dockerfile para facilitar a execução do projeto. Para executar o projeto utilizando Docker, siga os passos abaixo:
+
+### Build da Imagem Docker
+
+```bash
+docker build  --rm  -t trabalho-implementacao-web:latest "."
+```
+
+### Executar o Container Docker
+
+```bash
+docker container run -d -p 8000:8000 trabalho-implementacao-web:latest
 ```
 
 ## Créditos
