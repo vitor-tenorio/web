@@ -31,11 +31,11 @@
 ## Introdução
 Este projeto é um sistema de gestão de fazendas de cavalos desenvolvido com Django. O sistema permite gerenciar: 
 
-* fazendas de cavalos.
+* Fazendas de cavalos.
   
-* empregados.
+* Empregados.
   
-* sessões de treinamento.
+* Sessões de treinamento.
 
 ## Recursos Utilizados
 
@@ -93,6 +93,8 @@ O sistema é destinado a proprietários de fazendas de cavalos, gerentes e trein
 - Melhoria na organização e gestão das fazendas de cavalos.
 - Facilidade no acompanhamento das atividades de treinamento.
 - Segurança e controle de acesso com autenticação de usuários.
+- Reduz a quantidade de trabalho manual.
+- Acesso em nuvem de qualquer lugar do mundo.
 
 ### Diagrama Entidade-Relacionamento (DER)
 O diagrama entidade-relacionamento (DER) do sistema é apresentado abaixo:
