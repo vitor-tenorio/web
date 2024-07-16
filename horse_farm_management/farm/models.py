@@ -23,6 +23,7 @@ class Employee(models.Model):
     name = models.CharField(max_length=100)
     position = models.CharField(max_length=100)
     horses = models.ManyToManyField(Horse, through='TrainingSession')
+    farm = models.ForeignKey(Farm, on_delete=models.CASCADE, default=None, blank=True, null=True)
 
     def __str__(self):
         return f"{self.name}"

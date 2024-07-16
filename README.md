@@ -11,6 +11,7 @@
     * [Funcionalidades Principais](#funcionalidades-principais)
     * [Público-Alvo](#público-alvo)
     * [Benefícios](#benefícios)
+    * [Diagrama de Caso de Uso](#diagrama-de-caso-de-uso)
     * [Diagrama Entidade-Relacionamento (DER)](#diagrama-entidade-relacionamento-der)
 * [Execução do Projeto](#execução-do-projeto)
     * [Requisitos](#requisitos)
@@ -21,7 +22,7 @@
     * [Criando o Ambiente Virtual](#criando-o-ambiente-virtual)
     * [Ativando o Ambiente Virtual](#ativando-o-ambiente-virtual)
     * [Instalando as Dependências](#instalando-as-dependências)
-    * [Execute as migrações](#execute-as-migrações)
+    * [Executando as migrações](#execute-as-migrações)
     * [Crie um superusuário para acessar o admin](#crie-um-superusuário-para-acessar-o-admin)
     * [Executando o Projeto](#executando-o-projeto)
 * [Créditos](#créditos)
@@ -94,10 +95,15 @@ O sistema é destinado a proprietários de fazendas de cavalos, gerentes e trein
 - Reduz a quantidade de trabalho manual.
 - Acesso em nuvem de qualquer lugar do mundo.
 
+### Diagrama de Caso de Uso
+O diagrama de caso de uso do sistema é apresentado abaixo:
+
+![UseCase](./docs/UseCase-Diagram.png)
+
 ### Diagrama Entidade-Relacionamento (DER)
 O diagrama entidade-relacionamento (DER) do sistema é apresentado abaixo:
 
-![DER](./docs/DER.png)
+![DER](./docs/DER-work.png)
 
 ## Execução do Projeto
 
