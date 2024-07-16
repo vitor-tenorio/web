@@ -50,6 +50,8 @@ def farm_detail(request, farm_id):
     farm = get_object_or_404(Farm, id=farm_id)
     if not request.user.is_superuser and farm.owner != request.user:
         return redirect('home')
+    
+    farm.horses = Horse.objects.filter(farm=farm)  # Obtém os cavalos associados à fazenda
     return render(request, 'farm_detail.html', {'farm': farm})
 
 @login_required
@@ -93,9 +95,9 @@ def add_horse(request, farm_id):
         name = request.POST['name']
         breed = request.POST['breed']
         age = request.POST['age']
-        horse = Horse(name=name, breed=breed, age=age)
+        horse = Horse(name=name, breed=breed, age=age, farm = farm)
         horse.save()
-        farm.horses.add(horse)
+        #farm.horses.add(horse)
         return redirect('farm_detail', farm_id=farm.id)
     return render(request, 'add_horse.html', {'farm': farm})
 
