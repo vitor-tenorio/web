@@ -29,7 +29,13 @@
 # Sistema de Gestão de Fazendas de Cavalos
 
 ## Introdução
-Este projeto é um sistema de gestão de fazendas de cavalos desenvolvido com Django. O sistema permite gerenciar fazendas de cavalos, empregados e sessões de treinamento.
+Este projeto é um sistema de gestão de fazendas de cavalos desenvolvido com Django. O sistema permite gerenciar: 
+
+* fazendas de cavalos.
+  
+* empregados.
+  
+* sessões de treinamento.
 
 ## Recursos Utilizados
 
