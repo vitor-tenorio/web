@@ -32,9 +32,7 @@
 Este projeto é um sistema de gestão de fazendas de cavalos desenvolvido com Django. O sistema permite gerenciar: 
 
 * Fazendas de cavalos.
-  
 * Empregados.
-  
 * Sessões de treinamento.
 
 ## Recursos Utilizados
