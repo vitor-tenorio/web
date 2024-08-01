@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+
+{% block title %}Adicionar Empregado{% endblock %}
+
+{% block content %}
+<h1>Adicionar Empregado</h1>
+<form method="post">
+    {% csrf_token %}
+    <div class="form-group">
+        <label for="name">Nome</label>
+        <input type="text" class="form-control" id="name" name="name" required>
+    </div>
+    <div class="form-group">
+        <label for="position">Cargo</label>
+        <input type="text" class="form-control" id="position" name="position" required>
+    </div>
+    <button type="submit" class="btn btn-primary">Adicionar</button>
+</form>
+{% endblock %}

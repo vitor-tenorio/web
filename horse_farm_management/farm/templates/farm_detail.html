@@ -5,23 +5,117 @@
 {% block content %}
 <h1>{{ farm.name }}</h1>
 <p>Localização: {{ farm.location }}</p>
-<h2>Cavalos</h2>
-<ul class="list-group">
-    {% for horse in farm.horses.all %}
-        <li class="list-group-item">
-            {{ horse.name }} - {{ horse.breed }} - {{ horse.age }} anos
-            <a class="btn btn-secondary btn-sm" href="{% url 'edit_horse' farm.id horse.id %}">Editar</a>
-            <form method="post" action="{% url 'delete_horse' farm.id horse.id %}" style="display:inline;">
-                {% csrf_token %}
-                <button type="submit" class="btn btn-danger btn-sm">Excluir</button>
-            </form>
-        </li>
-    {% endfor %}
-</ul>
-<a class="btn btn-primary btn-lg" href="{% url 'add_horse' farm.id %}" role="button">Adicionar Cavalo</a>
-<a class="btn btn-secondary btn-lg" href="{% url 'edit_farm' farm.id %}" role="button">Editar Fazenda</a>
-<form method="post" action="{% url 'delete_farm' farm.id %}" style="display:inline;">
-    {% csrf_token %}
-    <button type="submit" class="btn btn-danger btn-lg">Excluir Fazenda</button>
-</form>
+
+<div class="row">
+    <div class="col-md-6">
+        <h2>Cavalos</h2>
+        <div class="table-responsive" style="max-height: 300px; overflow-y: auto;">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th scope="col">Nome</th>
+                        <th scope="col">Raça</th>
+                        <th scope="col">Idade</th>
+                        <th scope="col"></th>
+                    </tr>
+                </thead>
+                <tbody>
+                {% for horse in farm.horses.all %}
+                    <tr>
+                        <td scope="row">{{ horse.name }}</td>
+                        <td>{{ horse.breed }}</td>
+                        <td>{{ horse.age }} anos</td>
+                        <td class="text-right">
+                            <a class="btn btn-secondary btn-sm" href="{% url 'edit_horse' farm.id horse.id %}">Editar</a>
+                            <form method="post" action="{% url 'delete_horse' farm.id horse.id %}" style="display:inline;">
+                                {% csrf_token %}
+                                <button type="submit" class="btn btn-danger btn-sm">Excluir</button>
+                            </form>
+                        </td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <div class="col-md-6">
+        <h2>Empregados</h2>
+        <div class="table-responsive" style="max-height: 300px; overflow-y: auto;">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th scope="col">Nome</th>
+                        <th scope="col">Cargo</th>
+                        <th scope="col"></th>
+                    </tr>
+                </thead>
+                <tbody>
+                {% for employee in farm.employees.all %}
+                    <tr>
+                        <td scope="row">{{ employee.name }}</td>
+                        <td>{{ employee.position }}</td>
+                        <td class="text-right">
+                            <a class="btn btn-secondary btn-sm" href="{% url 'edit_employee' farm.id employee.id %}">Editar</a>
+                            <form method="post" action="{% url 'delete_employee' farm.id employee.id %}" style="display:inline;">
+                                {% csrf_token %}
+                                <button type="submit" class="btn btn-danger btn-sm">Excluir</button>
+                            </form>
+                        </td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+<div class="row mt-4">
+    <div class="col-md-12">
+        <h2>Sessões de Treinamento</h2>
+        <div class="table-responsive" style="max-height: 300px; overflow-y: auto;">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th scope="col">Cavalo</th>
+                        <th scope="col">Empregado</th>
+                        <th scope="col">Data</th>
+                        <th scope="col">Duração</th>
+                        <th scope="col">Notas</th>
+                        <th scope="col"></th>
+                    </tr>
+                </thead>
+                <tbody>
+                {% for session in farm.trainingsession_set.all %}
+                    <tr>
+                        <td scope="row">{{ session.horse.name }}</td>
+                        <td>{{ session.employee.name }}</td>
+                        <td>{{ session.date }}</td>
+                        <td>{{ session.duration }}</td>
+                        <td>{{ session.notes }}</td>
+                        <td class="text-right">
+                            <a class="btn btn-secondary btn-sm" href="{% url 'edit_trainingsession' farm.id session.id %}">Editar</a>
+                            <form method="post" action="{% url 'delete_trainingsession' farm.id session.id %}" style="display:inline;">
+                                {% csrf_token %}
+                                <button type="submit" class="btn btn-danger btn-sm">Excluir</button>
+                            </form>
+                        </td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+<div class="mt-4">
+    <a class="btn btn-primary btn-lg mr-1" href="{% url 'add_horse' farm.id %}" role="button">Adicionar Cavalo</a>
+    <a class="btn btn-primary btn-lg mr-1" href="{% url 'add_employee' farm.id %}" role="button">Adicionar Empregado</a>
+    <a class="btn btn-primary btn-lg mr-1" href="{% url 'add_trainingsession' farm.id %}" role="button">Adicionar Sessão de Treinamento</a>
+    <a class="btn btn-secondary btn-lg mr-1" href="{% url 'edit_farm' farm.id %}" role="button">Editar Fazenda</a>
+    <form method="post" action="{% url 'delete_farm' farm.id %}" style="display:inline;">
+        {% csrf_token %}
+        <button type="submit" class="btn btn-danger btn-lg">Excluir Fazenda</button>
+    </form>
+</div>
 {% endblock %}

@@ -111,8 +111,8 @@ O diagrama entidade-relacionamento (DER) do sistema é apresentado abaixo:
 ## Execução do Projeto Localmente
 
 ### Requisitos
-- Python 3.x
-- Django 4.2.x
+- Python 3.10.x
+- Django 5.0.x
 - Django-bootstrap 24.3
 
 ### Clone o repositório:
