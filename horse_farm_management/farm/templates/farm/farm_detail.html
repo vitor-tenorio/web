@@ -95,10 +95,7 @@
                         <td>{{ session.notes }}</td>
                         <td class="text-right">
                             <a class="btn btn-secondary btn-sm" href="{% url 'edit_trainingsession' farm.id session.id %}">Editar</a>
-                            <form method="post" action="{% url 'delete_trainingsession' farm.id session.id %}" style="display:inline;">
-                                {% csrf_token %}
-                                <button type="submit" class="btn btn-danger btn-sm">Excluir</button>
-                            </form>
+                            <a class="btn btn-danger btn-sm" href="{% url 'delete_trainingsession' farm.id session.id %}">Excluir</a>
                         </td>
                     </tr>
                 {% endfor %}

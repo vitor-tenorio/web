@@ -1,25 +1,5 @@
-import email
 from django import forms
-from .models import TrainingSession, Employee, Horse
 
-class TrainingSessionForm(forms.ModelForm):
-    class Meta:
-        model = TrainingSession
-        fields = ['horse', 'employee', 'date', 'duration', 'notes']
-        widgets = {
-            'date': forms.DateInput(attrs={'type': 'date', 'class': 'form-control'}),
-            'duration': forms.TimeInput(attrs={'type': 'time', 'class': 'form-control'}),
-            'notes': forms.Textarea(attrs={'class': 'form-control', 'rows': 3}),
-            'horse': forms.Select(attrs={'class': 'form-control'}),
-            'employee': forms.Select(attrs={'class': 'form-control'}),
-        }
-
-    def __init__(self, *args, **kwargs):
-        farm_id = kwargs.pop('farm_id')
-        super(TrainingSessionForm, self).__init__(*args, **kwargs)
-        self.fields['horse'].queryset = Horse.objects.filter(farm_id=farm_id)
-        self.fields['employee'].queryset = Employee.objects.filter(farm_id=farm_id)
-    
 class UserForm(forms.Form):
     userName = forms.CharField(
         label="Nome de Usuario",

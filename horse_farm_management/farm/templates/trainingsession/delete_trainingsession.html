@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+
+{% block title %}Confirmar Exclusão{% endblock %}
+
+{% block content %}
+<h1>Confirmar Exclusão</h1>
+<p>Tem certeza de que deseja excluir a sessão de treinamento com o cavalo {{ session.horse.name }} treinado pelo empregado {{ session.employee.name }} na data {{ session.date }}?</p>
+<form method="post">
+    {% csrf_token %}
+    <button type="submit" class="btn btn-danger">Excluir</button>
+    <a href="{% url 'farm_detail' farm.id %}" class="btn btn-secondary">Cancelar</a>
+</form>
+{% endblock %}
